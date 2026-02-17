@@ -18,10 +18,7 @@ body {
 .hero {
   position: relative;
   height: 45vh;
-  background: linear-gradient(
-      rgba(0,0,0,0.4),
-      rgba(0,0,0,0.4)
-    ),
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
     url("images/wedding.jpg") center/cover no-repeat;
 }
 
@@ -42,7 +39,6 @@ body {
 
 .hero-text p {
   font-size: 18px;
-  margin-top: 10px;
 }
 
 @keyframes glow {
@@ -72,19 +68,34 @@ body {
   min-height: 170px;
 }
 
-/* MEMORY GALLERY */
+/* HORIZONTAL MEMORY SCROLLER */
 .memories {
   margin-top: 25px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
 }
 
+/* Hide scrollbar */
+.memories::-webkit-scrollbar {
+  display: none;
+}
+.memories {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* MEMORY CARD */
 .memory {
   position: relative;
-  height: 150px;
-  border-radius: 18px;
+  flex: 0 0 70%;
+  aspect-ratio: 3 / 4; /* 🔥 Vertical 3:4 */
+  border-radius: 20px;
   overflow: hidden;
+  scroll-snap-align: start;
+  background: #000;
 }
 
 .memory img {
@@ -93,13 +104,14 @@ body {
   object-fit: cover;
 }
 
+/* TAG */
 .tag {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0,0,0,0.6);
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.65);
   backdrop-filter: blur(6px);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 14px;
   font-size: 13px;
   font-weight: bold;
@@ -112,7 +124,7 @@ body {
   font-weight: bold;
 }
 
-/* HEARTS */
+/* FLOATING HEARTS */
 .heart {
   position: fixed;
   font-size: 20px;
@@ -123,13 +135,6 @@ body {
 @keyframes floatUp {
   from { transform: translateY(100vh); opacity: 1; }
   to { transform: translateY(-10vh); opacity: 0; }
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .memories {
-    grid-template-columns: 1fr;
-  }
 }
 </style>
 </head>
@@ -147,37 +152,29 @@ body {
 <!-- CARD -->
 <div class="card">
   <div class="date">Married on 18 February 2024 ✨</div>
-
   <div id="text"></div>
 
-  <!-- MEMORY GALLERY -->
+  <!-- MEMORY SCROLLER -->
   <div class="memories">
 
-    <!-- OUR FIRST TRIP -->
-    <div class="memory"><img src=IMG_1109.jpg"><div class="tag">Our First Trip ✈️</div></div>
+    <div class="memory"><img src="IMG_1109.jpg"><div class="tag">Our First Trip ✈️</div></div>
     <div class="memory"><img src="Screenshot_2020-05-09-16-37-22-298_com.google.android.apps.photos.jpg"><div class="tag">Our First Trip ✈️</div></div>
     <div class="memory"><img src="IMG_0460.jpg"><div class="tag">Our First Trip ✈️</div></div>
 
-    <!-- CANDLE LIGHT DINNER -->
     <div class="memory"><img src="IMG-20200229-WA0005.jpg"><div class="tag">First Candle Light Dinner 🕯️</div></div>
 
-    <!-- ROKA -->
     <div class="memory"><img src="IMG-20231126-WA0004.jpg"><div class="tag">Our Roka 💍</div></div>
 
-    <!-- BEST MOMENTS -->
     <div class="memory"><img src="IMG_20230211_002047.jpg"><div class="tag">Best Moments 💕</div></div>
     <div class="memory"><img src="IMG_20230827_161339.jpg"><div class="tag">Best Moments 💕</div></div>
     <div class="memory"><img src="PXL_20241214_065856851.PORTRAIT.jpg"><div class="tag">Best Moments 💕</div></div>
     <div class="memory"><img src="PXL_20241215_103539459.MP.jpg"><div class="tag">Best Moments 💕</div></div>
     <div class="memory"><img src="PXL_20241230_172140521.jpg"><div class="tag">Best Moments 💕</div></div>
 
-    <!-- WEDDING -->
     <div class="memory"><img src="Picsart_26-02-18_00-54-27-943.jpg"><div class="tag">Our Wedding 👰🤵</div></div>
 
-    <!-- HONEYMOON -->
     <div class="memory"><img src="Picsart_26-02-18_00-56-38-812.jpg"><div class="tag">Our Honeymoon ✈️</div></div>
 
-    <!-- GARBA -->
     <div class="memory"><img src="Picsart_26-02-18_00-59-34-692.jpg"><div class="tag">Garba Moments 💃</div></div>
     <div class="memory"><img src="Picsart_26-02-18_00-57-49-607.jpg"><div class="tag">Garba Moments 💃</div></div>
 
@@ -219,7 +216,6 @@ function typeWriter() {
 }
 typeWriter();
 
-// Floating hearts
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
