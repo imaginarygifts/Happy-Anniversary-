@@ -38,10 +38,6 @@ body {
   animation: glow 2s ease-in-out infinite alternate;
 }
 
-.hero-text p {
-  font-size: 18px;
-}
-
 @keyframes glow {
   from { text-shadow: 0 0 6px #fff; }
   to { text-shadow: 0 0 28px #ffb6c1; }
@@ -58,7 +54,6 @@ body {
   text-align: center;
 }
 
-/* TEXT */
 #text {
   font-size: 18px;
   line-height: 1.6;
@@ -70,7 +65,6 @@ body {
   margin: 28px 0 8px;
   font-size: 18px;
   font-weight: bold;
-  letter-spacing: 0.5px;
 }
 
 /* SWIPE HINT */
@@ -78,13 +72,6 @@ body {
   font-size: 13px;
   opacity: 0.7;
   margin-bottom: 6px;
-  animation: swipe 1.6s infinite;
-}
-
-@keyframes swipe {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(6px); }
-  100% { transform: translateX(0); }
 }
 
 /* HORIZONTAL SCROLLER */
@@ -97,7 +84,6 @@ body {
 }
 .memories::-webkit-scrollbar { display: none; }
 
-/* MEMORY CARD */
 .memory {
   flex: 0 0 72%;
   aspect-ratio: 3 / 4;
@@ -151,6 +137,33 @@ body {
   cursor: pointer;
 }
 
+/* ENDING SCREEN */
+.ending {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.ending.show {
+  opacity: 1;
+}
+
+.ending h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.ending p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
 /* HEARTS */
 .heart {
   position: fixed;
@@ -176,125 +189,136 @@ body {
   </div>
 </div>
 
-<!-- CARD -->
 <div class="card">
   <div id="text"></div>
 
   <!-- FIRST TRIP -->
   <div class="section">✈️ Our First Trip</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
+  <div class="swipe-hint">Auto memories playing…</div>
+  <div class="memories auto">
     <div class="memory"><img src="IMG_1109.jpg"><div class="tag">First Trip</div></div>
     <div class="memory"><img src="Screenshot_2020-05-09-16-37-22-298_com.google.android.apps.photos.jpg"><div class="tag">First Trip</div></div>
     <div class="memory"><img src="IMG_0460.jpg"><div class="tag">First Trip</div></div>
   </div>
 
-  <!-- CANDLE LIGHT -->
+  <!-- CANDLE -->
   <div class="section">🕯️ Candle Light Dinner</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
-    <div class="memory"><img src="IMG-20200229-WA0005.jpg"><div class="tag">Candle Light</div></div>
+  <div class="memories auto">
+    <div class="memory"><img src="IMG-20200229-WA0005.jpg"><div class="tag">Dinner</div></div>
   </div>
 
   <!-- ROKA -->
   <div class="section">💍 Our Roka</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
+  <div class="memories auto">
     <div class="memory"><img src="IMG-20231126-WA0004.jpg"><div class="tag">Roka</div></div>
   </div>
 
   <!-- BEST MOMENTS -->
   <div class="section">💕 Best Moments</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
-    <div class="memory"><img src="IMG_20230211_002047.jpg"><div class="tag">Moments</div></div>
-    <div class="memory"><img src="IMG_20230827_161339.jpg"><div class="tag">Moments</div></div>
-    <div class="memory"><img src="PXL_20241214_065856851.PORTRAIT.jpg"><div class="tag">Moments</div></div>
-    <div class="memory"><img src="PXL_20241215_103539459.MP.jpg"><div class="tag">Moments</div></div>
-    <div class="memory"><img src="PXL_20241230_172140521.jpg"><div class="tag">Moments</div></div>
+  <div class="memories auto">
+    <div class="memory"><img src="IMG_20230211_002047.jpg"></div>
+    <div class="memory"><img src="IMG_20230827_161339.jpg"></div>
+    <div class="memory"><img src="PXL_20241214_065856851.PORTRAIT.jpg"></div>
+    <div class="memory"><img src="PXL_20241215_103539459.MP.jpg"></div>
+    <div class="memory"><img src="PXL_20241230_172140521.jpg"></div>
   </div>
 
   <!-- WEDDING -->
   <div class="section">👰🤵 Our Wedding</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
-    <div class="memory"><img src="Picsart_26-02-18_00-54-27-943.jpg"><div class="tag">Wedding</div></div>
+  <div class="memories auto">
+    <div class="memory"><img src="Picsart_26-02-18_00-54-27-943.jpg"></div>
   </div>
 
   <!-- HONEYMOON -->
   <div class="section">✈️ Our Honeymoon</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
-    <div class="memory"><img src="Picsart_26-02-18_00-56-38-812.jpg"><div class="tag">Honeymoon</div></div>
+  <div class="memories auto">
+    <div class="memory"><img src="Picsart_26-02-18_00-56-38-812.jpg"></div>
   </div>
 
   <!-- GARBA -->
   <div class="section">💃 Garba Moments</div>
-  <div class="swipe-hint">Swipe →</div>
-  <div class="memories">
-    <div class="memory"><img src="Picsart_26-02-18_00-59-34-692.jpg"><div class="tag">Garba</div></div>
-    <div class="memory"><img src="Picsart_26-02-18_00-57-49-607.jpg"><div class="tag">Garba</div></div>
+  <div class="memories auto">
+    <div class="memory"><img src="Picsart_26-02-18_00-59-34-692.jpg"></div>
+    <div class="memory"><img src="Picsart_26-02-18_00-57-49-607.jpg"></div>
   </div>
-
 </div>
 
-<!-- FULLSCREEN VIEWER -->
+<!-- ENDING SCREEN -->
+<div class="ending" id="ending">
+  <div>
+    <h2>Forever & Always 💖</h2>
+    <p>
+      This is not the end of our story,<br>
+      it’s the beginning of a lifetime.<br><br>
+      I love you, Siya.<br>
+      — Tushar 💍
+    </p>
+  </div>
+</div>
+
+<!-- VIEWER -->
 <div class="viewer" id="viewer">
   <span class="close" onclick="closeViewer()">×</span>
   <img id="viewerImg">
 </div>
 
-<!-- BACKGROUND MUSIC -->
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+/* Typing */
 const message = `
 Siya ❤️,
-
-From our first trip
-to becoming husband and wife,
-every memory with you
+Every memory with you
 is my favorite chapter.
-
-Today, tomorrow,
-and always —
+Today and always,
 I choose YOU. 💖
 `;
-
-let i = 0;
-function typeWriter() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeWriter, 45);
+let i=0;
+(function type(){
+  if(i<message.length){
+    text.innerHTML+=message.charAt(i++);
+    setTimeout(type,45);
   }
-}
-typeWriter();
+})();
 
-/* Fullscreen viewer + music */
-document.querySelectorAll(".memory img").forEach(img => {
-  img.addEventListener("click", () => {
-    document.getElementById("viewer").style.display = "flex";
-    document.getElementById("viewerImg").src = img.src;
-    document.getElementById("music").play();
-  });
+/* Auto scroll every 3s */
+document.querySelectorAll(".memories.auto").forEach(row=>{
+  let index=0;
+  setInterval(()=>{
+    const width=row.querySelector(".memory").offsetWidth+14;
+    index=(index+1)%row.children.length;
+    row.scrollTo({ left: index*width, behavior:"smooth" });
+  },3000);
 });
 
-function closeViewer() {
-  document.getElementById("viewer").style.display = "none";
-}
+/* Fullscreen */
+document.querySelectorAll(".memory img").forEach(img=>{
+  img.onclick=()=>{
+    viewer.style.display="flex";
+    viewerImg.src=img.src;
+    music.play();
+  };
+});
+function closeViewer(){ viewer.style.display="none"; }
 
-/* Floating hearts */
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random() * 100 + "vw";
+/* Ending reveal */
+window.addEventListener("scroll",()=>{
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 50){
+    document.getElementById("ending").classList.add("show");
+  }
+});
+
+/* Hearts */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
   document.body.appendChild(h);
-  setTimeout(() => h.remove(), 8000);
-}, 450);
+  setTimeout(()=>h.remove(),8000);
+},450);
 </script>
 
 </body>
