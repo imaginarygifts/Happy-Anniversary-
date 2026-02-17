@@ -2,68 +2,117 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Anniversary ❤️</title>
+<title>Happy Anniversary Tushar & Siya ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: radial-gradient(circle at top, #ff758c, #ffb199);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: 'Georgia', serif;
-  overflow: hidden;
+  overflow-x: hidden;
   color: #fff;
-  text-align: center;
 }
 
+/* HERO IMAGE */
+.hero {
+  position: relative;
+  height: 42vh;
+  background-image: url("https://images.unsplash.com/photo-1529634893321-6f7c9f01c4b6");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.hero-text h1 {
+  font-size: 34px;
+  margin: 0;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 6px #fff; }
+  to { text-shadow: 0 0 24px #ffd1dc; }
+}
+
+/* CARD */
 .card {
   background: rgba(255,255,255,0.18);
   backdrop-filter: blur(12px);
   border-radius: 28px;
-  padding: 32px;
+  padding: 30px;
   max-width: 380px;
-  animation: fadeIn 3s ease;
+  margin: -70px auto 45px;
+  text-align: center;
+  animation: fadeIn 2.5s ease;
 }
 
-.anniversary {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  animation: glow 2s ease-in-out infinite alternate;
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(50px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #fff; }
-  to { text-shadow: 0 0 20px #ffd1dc; }
-}
-
-h1 {
-  font-size: 26px;
+.date {
+  font-size: 16px;
   margin-bottom: 15px;
+  opacity: 0.9;
 }
 
 #text {
   font-size: 18px;
   line-height: 1.6;
-  min-height: 160px;
+  min-height: 170px;
 }
 
-.signature {
+/* GALLERY */
+.gallery {
+  display: flex;
+  gap: 10px;
   margin-top: 22px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 14px;
+  flex: 1;
+  object-fit: cover;
+  height: 110px;
+}
+
+/* SIGNATURE */
+.signature {
+  margin-top: 24px;
   font-weight: bold;
   font-size: 20px;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.85);}
-  to {opacity: 1; transform: scale(1);}
-}
-
-/* Floating Hearts */
+/* FLOATING HEARTS */
 .heart {
-  position: absolute;
+  position: fixed;
   color: rgba(255,255,255,0.85);
   font-size: 20px;
   animation: floatUp 8s linear infinite;
@@ -78,30 +127,52 @@ h1 {
 
 <body>
 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>💖 Happy Anniversary 💖</h1>
+    <p>Tushar 💍 Siya</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
 <div class="card">
-  <div class="anniversary">💖 Happy Anniversary 💖</div>
-  <h1>My Forever Love</h1>
+  <div class="date">Married on 18 February 2024 ✨</div>
+
   <div id="text"></div>
+
+  <!-- IMAGE GALLERY -->
+  <div class="gallery">
+    <img src="20251124_002714.jpg" alt="">
+    <img src="20260123_142527.jpg" alt="">
+  </div>
+
   <div class="signature">
-    — Tushar 💍 Siya
+    Forever Yours ❤️<br>
+    Tushar
   </div>
 </div>
 
 <script>
 const message = `
-From this moment,
-every smile I see,
-every dream I dream,
-every prayer I whisper…
+Siya ❤️,
 
-has only one name — YOU.
+From 18 February 2024,
+every heartbeat of mine
+found its forever home in you.
+
+This journey with you
+is my greatest blessing,
+my deepest comfort,
+and my happiest dream.
 
 Every anniversary reminds me
 that choosing you
 was the best decision of my life.
 
-Today and always,
-I choose YOU. ❤️
+Today, tomorrow,
+and always —
+I choose YOU. 💖
 `;
 
 let i = 0;
@@ -114,7 +185,7 @@ function typeWriter() {
 }
 typeWriter();
 
-// Hearts generator
+// Floating Hearts
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
