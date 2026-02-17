@@ -8,27 +8,21 @@
 <style>
 body {
   margin: 0;
-  min-height: 100vh;
   background: radial-gradient(circle at top, #ff758c, #ffb199);
   font-family: 'Georgia', serif;
-  overflow-x: hidden;
   color: #fff;
+  overflow-x: hidden;
 }
 
-/* HERO IMAGE */
+/* HERO */
 .hero {
   position: relative;
-  height: 42vh;
-  background-image: url("https://images.unsplash.com/photo-1529634893321-6f7c9f01c4b6");
-  background-size: cover;
-  background-position: center;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
+  height: 45vh;
+  background: linear-gradient(
+      rgba(0,0,0,0.4),
+      rgba(0,0,0,0.4)
+    ),
+    url("images/wedding.jpg") center/cover no-repeat;
 }
 
 .hero-text {
@@ -36,16 +30,13 @@ body {
   inset: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  z-index: 1;
+  align-items: center;
   text-align: center;
-  padding: 0 15px;
 }
 
 .hero-text h1 {
   font-size: 34px;
-  margin: 0;
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -56,30 +47,23 @@ body {
 
 @keyframes glow {
   from { text-shadow: 0 0 6px #fff; }
-  to { text-shadow: 0 0 24px #ffd1dc; }
+  to { text-shadow: 0 0 25px #ffd1dc; }
 }
 
 /* CARD */
 .card {
   background: rgba(255,255,255,0.18);
   backdrop-filter: blur(12px);
-  border-radius: 28px;
+  border-radius: 30px;
+  max-width: 420px;
+  margin: -80px auto 40px;
   padding: 30px;
-  max-width: 380px;
-  margin: -70px auto 45px;
   text-align: center;
-  animation: fadeIn 2.5s ease;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(50px);}
-  to {opacity: 1; transform: translateY(0);}
 }
 
 .date {
   font-size: 16px;
   margin-bottom: 15px;
-  opacity: 0.9;
 }
 
 #text {
@@ -88,39 +72,64 @@ body {
   min-height: 170px;
 }
 
-/* GALLERY */
-.gallery {
-  display: flex;
-  gap: 10px;
-  margin-top: 22px;
+/* MEMORY GALLERY */
+.memories {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
-.gallery img {
+.memory {
+  position: relative;
+  height: 150px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.memory img {
   width: 100%;
-  border-radius: 14px;
-  flex: 1;
+  height: 100%;
   object-fit: cover;
-  height: 110px;
+}
+
+.tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 /* SIGNATURE */
 .signature {
-  margin-top: 24px;
-  font-weight: bold;
+  margin-top: 25px;
   font-size: 20px;
+  font-weight: bold;
 }
 
-/* FLOATING HEARTS */
+/* HEARTS */
 .heart {
   position: fixed;
-  color: rgba(255,255,255,0.85);
   font-size: 20px;
+  color: rgba(255,255,255,0.8);
   animation: floatUp 8s linear infinite;
 }
 
 @keyframes floatUp {
-  from {transform: translateY(100vh); opacity: 1;}
-  to {transform: translateY(-10vh); opacity: 0;}
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .memories {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -135,16 +144,43 @@ body {
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- CARD -->
 <div class="card">
   <div class="date">Married on 18 February 2024 ✨</div>
 
   <div id="text"></div>
 
-  <!-- IMAGE GALLERY -->
-  <div class="gallery">
-    <img src="20251124_002714.jpg" alt="">
-    <img src="20260123_142527.jpg" alt="">
+  <!-- MEMORY GALLERY -->
+  <div class="memories">
+
+    <!-- OUR FIRST TRIP -->
+    <div class="memory"><img src="images/first-trip-1.jpg"><div class="tag">Our First Trip ✈️</div></div>
+    <div class="memory"><img src="images/first-trip-2.jpg"><div class="tag">Our First Trip ✈️</div></div>
+    <div class="memory"><img src="images/first-trip-3.jpg"><div class="tag">Our First Trip ✈️</div></div>
+
+    <!-- CANDLE LIGHT DINNER -->
+    <div class="memory"><img src="images/candle-light-dinner.jpg"><div class="tag">First Candle Light Dinner 🕯️</div></div>
+
+    <!-- ROKA -->
+    <div class="memory"><img src="images/roka.jpg"><div class="tag">Our Roka 💍</div></div>
+
+    <!-- BEST MOMENTS -->
+    <div class="memory"><img src="images/best-moment-1.jpg"><div class="tag">Best Moments 💕</div></div>
+    <div class="memory"><img src="images/best-moment-2.jpg"><div class="tag">Best Moments 💕</div></div>
+    <div class="memory"><img src="images/best-moment-3.jpg"><div class="tag">Best Moments 💕</div></div>
+    <div class="memory"><img src="images/best-moment-4.jpg"><div class="tag">Best Moments 💕</div></div>
+    <div class="memory"><img src="images/best-moment-5.jpg"><div class="tag">Best Moments 💕</div></div>
+
+    <!-- WEDDING -->
+    <div class="memory"><img src="images/wedding.jpg"><div class="tag">Our Wedding 👰🤵</div></div>
+
+    <!-- HONEYMOON -->
+    <div class="memory"><img src="images/honeymoon.jpg"><div class="tag">Our Honeymoon ✈️</div></div>
+
+    <!-- GARBA -->
+    <div class="memory"><img src="images/garba-1.jpg"><div class="tag">Garba Moments 💃</div></div>
+    <div class="memory"><img src="images/garba-2.jpg"><div class="tag">Garba Moments 💃</div></div>
+
   </div>
 
   <div class="signature">
@@ -161,14 +197,12 @@ From 18 February 2024,
 every heartbeat of mine
 found its forever home in you.
 
-This journey with you
-is my greatest blessing,
-my deepest comfort,
-and my happiest dream.
-
-Every anniversary reminds me
-that choosing you
-was the best decision of my life.
+From our first trip,
+to candlelight dinners,
+to Roka,
+to becoming husband and wife —
+every moment with you
+is my favorite story.
 
 Today, tomorrow,
 and always —
@@ -185,7 +219,7 @@ function typeWriter() {
 }
 typeWriter();
 
-// Floating Hearts
+// Floating hearts
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -194,7 +228,7 @@ setInterval(() => {
   heart.style.fontSize = (14 + Math.random() * 22) + "px";
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 8000);
-}, 380);
+}, 400);
 </script>
 
 </body>
