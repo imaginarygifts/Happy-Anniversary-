@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Anniversary ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #ff758c, #ffb199);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 32px;
+  max-width: 380px;
+  animation: fadeIn 3s ease;
+}
+
+.anniversary {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #fff; }
+  to { text-shadow: 0 0 20px #ffd1dc; }
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+#text {
+  font-size: 18px;
+  line-height: 1.6;
+  min-height: 160px;
+}
+
+.signature {
+  margin-top: 22px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.85);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* Floating Hearts */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.85);
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  from {transform: translateY(100vh); opacity: 1;}
+  to {transform: translateY(-10vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="anniversary">💖 Happy Anniversary 💖</div>
+  <h1>My Forever Love</h1>
+  <div id="text"></div>
+  <div class="signature">
+    — Tushar 💍 Siya
+  </div>
+</div>
+
+<script>
+const message = `
+From this moment,
+every smile I see,
+every dream I dream,
+every prayer I whisper…
+
+has only one name — YOU.
+
+Every anniversary reminds me
+that choosing you
+was the best decision of my life.
+
+Today and always,
+I choose YOU. ❤️
+`;
+
+let i = 0;
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 45);
+  }
+}
+typeWriter();
+
+// Hearts generator
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 22) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}, 380);
+</script>
+
+</body>
+</html>
